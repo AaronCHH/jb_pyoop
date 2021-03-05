@@ -1,0 +1,844 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ch07 物件與類別 &#8212; OOP in Python</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Python程式設計入門指南(蔡明志譯 碁峰 2016)" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%85%A5%E9%96%80%E6%8C%87%E5%8D%97_%E8%94%A1%E6%98%8E%E5%BF%97%E8%AD%AF_%E7%A2%81%E5%B3%B0_2016.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">OOP in Python</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../content.html">
+   Content in Jupyter Book
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../markdown.html">
+     Markdown Files
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../notebooks.html">
+     Content with notebooks
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AD%B8%E7%BF%92%E7%B6%93%E5%85%B8_%E5%90%B3%E7%BF%8C%E7%A6%8E_%E7%A2%81%E5%B3%B0_2018.html">
+   Python程式設計學習經典(吳翌禎 碁峰 2018)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AD%B8%E7%BF%92%E7%B6%93%E5%85%B8_%E5%90%B3%E7%BF%8C%E7%A6%8E_%E7%A2%81%E5%B3%B0_2018/ch08/ch08.html">
+     Python 基本語法：物件導向
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AF%A6%E7%94%A8%E7%B6%93%E5%85%B8_%E8%A8%B1%E6%B8%85%E8%B3%A2_%E6%9D%BE%E5%B4%97_2016.html">
+   Python程式設計實用經典 (許清賢 松崗 2016)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AF%A6%E7%94%A8%E7%B6%93%E5%85%B8_%E8%A8%B1%E6%B8%85%E8%B3%A2_%E6%9D%BE%E5%B4%97_2016/ch03.html">
+     Ch03 類別結構及功能
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%A4%A7%E6%95%B8%E6%93%9A%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90_%E8%94%A1%E6%98%8E%E5%BF%97_%E7%A2%81%E5%B3%B0_2018.html">
+   Python程式設計大數據資料分析(蔡明志 碁峰 2018)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%A4%A7%E6%95%B8%E6%93%9A%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90_%E8%94%A1%E6%98%8E%E5%BF%97_%E7%A2%81%E5%B3%B0_2018/ch12.html">
+     Ch12 物件導向程式設計
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%85%A5%E9%96%80%E6%8C%87%E5%8D%97_%E8%94%A1%E6%98%8E%E5%BF%97%E8%AD%AF_%E7%A2%81%E5%B3%B0_2016.html">
+   Python程式設計入門指南(蔡明志譯 碁峰 2016)
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Ch07 物件與類別
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/B_Python程式設計入門指南_蔡明志譯_碁峰_2016/ch07/ch07.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FB_Python程式設計入門指南_蔡明志譯_碁峰_2016/ch07/ch07.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/B_Python程式設計入門指南_蔡明志譯_碁峰_2016/ch07/ch07.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   7.2 定義物件類別
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   7.3 類別圖
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   7.4 不可變更物件與可變更物件
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   7.5 隱藏資料項目
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   類別的萃取與封裝
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   物件導向思維
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#others">
+   Others
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="ch07">
+<h1>Ch07 物件與類別<a class="headerlink" href="#ch07" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>7.2 定義物件類別<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load Circle.py</span>
+<span class="kn">import</span> <span class="nn">math</span> 
+
+<span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
+    <span class="c1"># Construct a circle object </span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+    <span class="k">def</span> <span class="nf">getPerimeter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+
+    <span class="k">def</span> <span class="nf">getArea</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+          
+    <span class="k">def</span> <span class="nf">setRadius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load TestCircle.py</span>
+<span class="kn">from</span> <span class="nn">Circle</span> <span class="kn">import</span> <span class="n">Circle</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Create a circle with radius 1</span>
+    <span class="n">circle1</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The area of the circle of radius&quot;</span><span class="p">,</span>
+        <span class="n">circle1</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="n">circle1</span><span class="o">.</span><span class="n">getArea</span><span class="p">())</span>
+
+    <span class="c1"># Create a circle with radius 25</span>
+    <span class="n">circle2</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The area of the circle of radius&quot;</span><span class="p">,</span>
+        <span class="n">circle2</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="n">circle2</span><span class="o">.</span><span class="n">getArea</span><span class="p">())</span>
+
+    <span class="c1"># Create a circle with radius 125</span>
+    <span class="n">circle3</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">125</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The area of the circle of radius&quot;</span><span class="p">,</span>
+        <span class="n">circle3</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="n">circle3</span><span class="o">.</span><span class="n">getArea</span><span class="p">())</span>
+
+    <span class="c1"># Modify circle radius</span>
+    <span class="n">circle2</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The area of the circle of radius&quot;</span><span class="p">,</span> 
+        <span class="n">circle2</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="n">circle2</span><span class="o">.</span><span class="n">getArea</span><span class="p">())</span>
+
+<span class="n">main</span><span class="p">()</span> <span class="c1"># Call the main function</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The area of the circle of radius 1 is 3.141592653589793
+The area of the circle of radius 25 is 1963.4954084936207
+The area of the circle of radius 125 is 49087.385212340516
+The area of the circle of radius 100 is 31415.926535897932
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>7.3 類別圖<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load TV.py</span>
+<span class="k">class</span> <span class="nc">TV</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Default channel is 1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">volumeLevel</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Default volume level is 1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">on</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># By default TV is off</span>
+  
+    <span class="k">def</span> <span class="nf">turnOn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">on</span> <span class="o">=</span> <span class="kc">True</span>
+  
+    <span class="k">def</span> <span class="nf">turnOff</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">on</span> <span class="o">=</span> <span class="kc">False</span>
+  
+    <span class="k">def</span> <span class="nf">getChannel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel</span>
+
+    <span class="k">def</span> <span class="nf">setChannel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">on</span> <span class="ow">and</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">&lt;=</span> <span class="mi">120</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">=</span> <span class="n">channel</span>
+  
+    <span class="k">def</span> <span class="nf">getVolumeLevel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">volumeLevel</span>
+
+    <span class="k">def</span> <span class="nf">setVolume</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">volumeLevel</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">on</span> <span class="ow">and</span> \
+              <span class="mi">1</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">volumeLevel</span> <span class="o">&lt;=</span> <span class="mi">7</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">volumeLevel</span> <span class="o">=</span> <span class="n">volumeLevel</span>
+  
+    <span class="k">def</span> <span class="nf">channelUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">on</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">&lt;</span> <span class="mi">120</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">+=</span> <span class="mi">1</span>
+  
+    <span class="k">def</span> <span class="nf">channelDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">on</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">channel</span> <span class="o">-=</span> <span class="mi">1</span>
+  
+    <span class="k">def</span> <span class="nf">volumeUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">on</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">volumeLevel</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">volumeLevel</span> <span class="o">+=</span> <span class="mi">1</span>
+  
+    <span class="k">def</span> <span class="nf">volumeDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">on</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">volumeLevel</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">volumeLevel</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load TestTV.py</span>
+<span class="kn">from</span> <span class="nn">TV</span> <span class="kn">import</span> <span class="n">TV</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">tv1</span> <span class="o">=</span> <span class="n">TV</span><span class="p">()</span>
+    <span class="n">tv1</span><span class="o">.</span><span class="n">turnOn</span><span class="p">()</span>
+    <span class="n">tv1</span><span class="o">.</span><span class="n">setChannel</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">tv1</span><span class="o">.</span><span class="n">setVolume</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    
+    <span class="n">tv2</span> <span class="o">=</span> <span class="n">TV</span><span class="p">()</span>
+    <span class="n">tv2</span><span class="o">.</span><span class="n">turnOn</span><span class="p">()</span>
+    <span class="n">tv2</span><span class="o">.</span><span class="n">channelUp</span><span class="p">()</span>
+    <span class="n">tv2</span><span class="o">.</span><span class="n">channelUp</span><span class="p">()</span>
+    <span class="n">tv2</span><span class="o">.</span><span class="n">volumeUp</span><span class="p">()</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tv1&#39;s channel is&quot;</span><span class="p">,</span> <span class="n">tv1</span><span class="o">.</span><span class="n">getChannel</span><span class="p">(),</span> 
+        <span class="s2">&quot;and volume level is&quot;</span><span class="p">,</span> <span class="n">tv1</span><span class="o">.</span><span class="n">getVolumeLevel</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;tv2&#39;s channel is&quot;</span><span class="p">,</span> <span class="n">tv2</span><span class="o">.</span><span class="n">getChannel</span><span class="p">(),</span>
+        <span class="s2">&quot;and volume level is&quot;</span><span class="p">,</span> <span class="n">tv2</span><span class="o">.</span><span class="n">getVolumeLevel</span><span class="p">())</span>
+
+<span class="n">main</span><span class="p">()</span> <span class="c1"># Call the main function</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tv1&#39;s channel is 30 and volume level is 3
+tv2&#39;s channel is 3 and volume level is 2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>7.4 不可變更物件與可變更物件<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load TestPassMutableObject.py</span>
+<span class="kn">from</span> <span class="nn">Circle</span> <span class="kn">import</span> <span class="n">Circle</span> 
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Create a Circle object with radius 1</span>
+    <span class="n">myCircle</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">()</span>
+
+    <span class="c1"># Print areas for radius 1, 2, 3, 4, and 5.</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">printAreas</span><span class="p">(</span><span class="n">myCircle</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># Display myCircle.radius and times</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Radius is&quot;</span><span class="p">,</span> <span class="n">myCircle</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n is&quot;</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+  
+<span class="c1"># Print a table of areas for radius </span>
+<span class="k">def</span> <span class="nf">printAreas</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">times</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Radius </span><span class="se">\t\t</span><span class="s2">Area&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">times</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">getArea</span><span class="p">())</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">radius</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">times</span> <span class="o">-=</span> <span class="mi">1</span>
+
+<span class="n">main</span><span class="p">()</span> <span class="c1"># Call the main function</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Radius 		Area
+1 		 3.141592653589793
+2 		 12.566370614359172
+3 		 28.274333882308138
+4 		 50.26548245743669
+5 		 78.53981633974483
+
+Radius is 6
+n is 5
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>7.5 隱藏資料項目<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load CircleWithPrivateRadius.py</span>
+<span class="kn">import</span> <span class="nn">math</span> 
+
+<span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
+    <span class="c1"># Construct a circle object </span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+    <span class="k">def</span> <span class="nf">getRadius</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span>
+
+    <span class="k">def</span> <span class="nf">getPerimeter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+
+    <span class="k">def</span> <span class="nf">getArea</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>類別的萃取與封裝<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load TestLoanClass.py</span>
+<span class="kn">from</span> <span class="nn">Loan</span> <span class="kn">import</span> <span class="n">Loan</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Enter yearly interest rate</span>
+    <span class="n">annualInterestRate</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="nb">input</span>
+        <span class="p">(</span><span class="s2">&quot;Enter yearly interest rate, for example, 7.25: &quot;</span><span class="p">))</span>
+
+    <span class="c1"># Enter number of years</span>
+    <span class="n">numberOfYears</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span>
+        <span class="s2">&quot;Enter number of years as an integer: &quot;</span><span class="p">))</span>
+
+    <span class="c1"># Enter loan amount</span>
+    <span class="n">loanAmount</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span>
+        <span class="s2">&quot;Enter loan amount, for example, 120000.95: &quot;</span><span class="p">))</span>
+
+    <span class="c1"># Enter a borrwer</span>
+    <span class="n">borrower</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a borrower&#39;s name: &quot;</span><span class="p">)</span>
+
+    <span class="c1"># Create a Loan object</span>
+    <span class="n">loan</span> <span class="o">=</span> <span class="n">Loan</span><span class="p">(</span><span class="n">annualInterestRate</span><span class="p">,</span> <span class="n">numberOfYears</span><span class="p">,</span> 
+        <span class="n">loanAmount</span><span class="p">,</span> <span class="n">borrower</span><span class="p">)</span>
+
+    <span class="c1"># Display loan date, monthly payment, and total payment</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The loan is for&quot;</span><span class="p">,</span> <span class="n">loan</span><span class="o">.</span><span class="n">getBorrower</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The monthly payment is&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span>
+        <span class="n">loan</span><span class="o">.</span><span class="n">getMonthlyPayment</span><span class="p">(),</span> <span class="s1">&#39;.2f&#39;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The total payment is&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span>
+        <span class="n">loan</span><span class="o">.</span><span class="n">getTotalPayment</span><span class="p">(),</span> <span class="s1">&#39;.2f&#39;</span><span class="p">))</span>
+
+<span class="n">main</span><span class="p">()</span> <span class="c1"># Call the main function</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Enter yearly interest rate, for example, 7.25: 7.25
+Enter number of years as an integer: 10
+Enter loan amount, for example, 120000.95: 120000
+Enter a borrower&#39;s name: lorem
+The loan is for lorem
+The monthly payment is 1408.81
+The total payment is 169057.50
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>物件導向思維<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load UseBMIClass.py</span>
+<span class="kn">from</span> <span class="nn">BMI</span> <span class="kn">import</span> <span class="n">BMI</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">bmi1</span> <span class="o">=</span> <span class="n">BMI</span><span class="p">(</span><span class="s2">&quot;John Doe&quot;</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The BMI for&quot;</span><span class="p">,</span> <span class="n">bmi1</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span>
+        <span class="n">bmi1</span><span class="o">.</span><span class="n">getBMI</span><span class="p">(),</span> <span class="n">bmi1</span><span class="o">.</span><span class="n">getStatus</span><span class="p">())</span>
+    
+    <span class="n">bmi2</span> <span class="o">=</span> <span class="n">BMI</span><span class="p">(</span><span class="s2">&quot;Peter King&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">215</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The BMI for&quot;</span><span class="p">,</span> <span class="n">bmi2</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span>
+        <span class="n">bmi2</span><span class="o">.</span><span class="n">getBMI</span><span class="p">(),</span> <span class="n">bmi2</span><span class="o">.</span><span class="n">getStatus</span><span class="p">())</span>
+
+<span class="n">main</span><span class="p">()</span> <span class="c1"># Call the main function</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The BMI for John Doe is 20.81 Normal
+The BMI for Peter King is 30.85 Obese
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="others">
+<h2>Others<a class="headerlink" href="#others" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load GeometricObject.py</span>
+<span class="k">class</span> <span class="nc">GeometricObject</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">filled</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__color</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__filled</span> <span class="o">=</span> <span class="n">filled</span>
+
+    <span class="k">def</span> <span class="nf">getColor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__color</span>
+
+    <span class="k">def</span> <span class="nf">setColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__color</span> <span class="o">=</span> <span class="n">color</span>
+
+    <span class="k">def</span> <span class="nf">isFilled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__filled</span>
+
+    <span class="k">def</span> <span class="nf">setFilled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filled</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__filled</span> <span class="o">=</span> <span class="n">filled</span>
+  
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;color: &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">__color</span> <span class="o">+</span> \
+            <span class="s2">&quot; and filled: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__filled</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load CircleFromGeometricObject.py</span>
+<span class="kn">from</span> <span class="nn">GeometricObject</span> <span class="kn">import</span> <span class="n">GeometricObject</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="n">GeometricObject</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+    <span class="k">def</span> <span class="nf">getRadius</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span>
+
+    <span class="k">def</span> <span class="nf">setRadius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+    <span class="k">def</span> <span class="nf">getArea</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+  
+    <span class="k">def</span> <span class="nf">getDiameter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span>
+  
+    <span class="k">def</span> <span class="nf">getPerimeter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+
+    <span class="k">def</span> <span class="nf">printCircle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; radius: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__radius</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load InvalidRadiusException.py</span>
+<span class="k">class</span> <span class="nc">InvalidRadiusException</span><span class="p">(</span><span class="ne">RuntimeError</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load CircleWithCustomException.py</span>
+<span class="kn">from</span> <span class="nn">GeometricObject</span> <span class="kn">import</span> <span class="n">GeometricObject</span>
+<span class="kn">from</span> <span class="nn">InvalidRadiusException</span> <span class="kn">import</span> <span class="n">InvalidRadiusException</span> 
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="n">GeometricObject</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setRadius</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">getRadius</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span>
+
+    <span class="k">def</span> <span class="nf">setRadius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">radius</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">=</span> <span class="n">radius</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InvalidRadiusException</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">getArea</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+  
+    <span class="k">def</span> <span class="nf">getDiameter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span>
+  
+    <span class="k">def</span> <span class="nf">getPerimeter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+
+    <span class="k">def</span> <span class="nf">printCircle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(),</span> <span class="s2">&quot;radius:&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load CircleWithException.py</span>
+<span class="kn">from</span> <span class="nn">GeometricObject</span> <span class="kn">import</span> <span class="n">GeometricObject</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="n">GeometricObject</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setRadius</span><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">getRadius</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span>
+
+    <span class="k">def</span> <span class="nf">setRadius</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">radius</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Negative radius&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+    <span class="k">def</span> <span class="nf">getArea</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+  
+    <span class="k">def</span> <span class="nf">getDiameter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span>
+  
+    <span class="k">def</span> <span class="nf">getPerimeter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+
+    <span class="k">def</span> <span class="nf">printCircle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; radius: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__radius</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load CircleWithPrivateRadius.py</span>
+<span class="kn">import</span> <span class="nn">math</span> 
+
+<span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
+    <span class="c1"># Construct a circle object </span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+    <span class="k">def</span> <span class="nf">getRadius</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span>
+
+    <span class="k">def</span> <span class="nf">getPerimeter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+
+    <span class="k">def</span> <span class="nf">getArea</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">__radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./B_Python程式設計入門指南_蔡明志譯_碁峰_2016\ch07"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%85%A5%E9%96%80%E6%8C%87%E5%8D%97_%E8%94%A1%E6%98%8E%E5%BF%97%E8%AD%AF_%E7%A2%81%E5%B3%B0_2016.html" title="previous page">Python程式設計入門指南(蔡明志譯 碁峰 2016)</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Aaron Hsu<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
