@@ -1,0 +1,701 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python 基本語法：物件導向 &#8212; OOP in Python</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="最新Python程式設計實例入門(高橋麻奈 博碩 2019)" href="../../B_%E6%9C%80%E6%96%B0Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AF%A6%E4%BE%8B%E5%85%A5%E9%96%80_%E9%AB%98%E6%A9%8B%E9%BA%BB%E5%A5%88_%E5%8D%9A%E7%A2%A9_2019.html" />
+    <link rel="prev" title="Python程式設計學習經典(吳翌禎 碁峰 2018)" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AD%B8%E7%BF%92%E7%B6%93%E5%85%B8_%E5%90%B3%E7%BF%8C%E7%A6%8E_%E7%A2%81%E5%B3%B0_2018.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">OOP in Python</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AD%B8%E7%BF%92%E7%B6%93%E5%85%B8_%E5%90%B3%E7%BF%8C%E7%A6%8E_%E7%A2%81%E5%B3%B0_2018.html">
+   Python程式設計學習經典(吳翌禎 碁峰 2018)
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Python 基本語法：物件導向
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_%E6%9C%80%E6%96%B0Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AF%A6%E4%BE%8B%E5%85%A5%E9%96%80_%E9%AB%98%E6%A9%8B%E9%BA%BB%E5%A5%88_%E5%8D%9A%E7%A2%A9_2019.html">
+   最新Python程式設計實例入門(高橋麻奈 博碩 2019)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E6%9C%80%E6%96%B0Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AF%A6%E4%BE%8B%E5%85%A5%E9%96%80_%E9%AB%98%E6%A9%8B%E9%BA%BB%E5%A5%88_%E5%8D%9A%E7%A2%A9_2019/ch08/ch08.html">
+     Ch08 類別
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AF%A6%E7%94%A8%E7%B6%93%E5%85%B8_%E8%A8%B1%E6%B8%85%E8%B3%A2_%E6%9D%BE%E5%B4%97_2016.html">
+   Python程式設計實用經典 (許清賢 松崗 2016)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AF%A6%E7%94%A8%E7%B6%93%E5%85%B8_%E8%A8%B1%E6%B8%85%E8%B3%A2_%E6%9D%BE%E5%B4%97_2016/ch03.html">
+     Ch03 類別結構及功能
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%A4%A7%E6%95%B8%E6%93%9A%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90_%E8%94%A1%E6%98%8E%E5%BF%97_%E7%A2%81%E5%B3%B0_2018.html">
+   Python程式設計大數據資料分析(蔡明志 碁峰 2018)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%A4%A7%E6%95%B8%E6%93%9A%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90_%E8%94%A1%E6%98%8E%E5%BF%97_%E7%A2%81%E5%B3%B0_2018/ch12.html">
+     Ch12 物件導向程式設計
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%85%A5%E9%96%80%E6%8C%87%E5%8D%97_%E8%94%A1%E6%98%8E%E5%BF%97%E8%AD%AF_%E7%A2%81%E5%B3%B0_2016.html">
+   Python程式設計入門指南(蔡明志譯 碁峰 2016)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%85%A5%E9%96%80%E6%8C%87%E5%8D%97_%E8%94%A1%E6%98%8E%E5%BF%97%E8%AD%AF_%E7%A2%81%E5%B3%B0_2016/ch07/ch07.html">
+     Ch07 物件與類別
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_%E8%BC%95%E9%AC%86%E5%AD%B8python3_%E5%AD%AB%E5%AE%8F%E6%98%8E_%E7%A2%81%E5%B3%B0_2017.html">
+   輕鬆學python3 孫宏明 碁峰 2017
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E8%BC%95%E9%AC%86%E5%AD%B8python3_%E5%AD%AB%E5%AE%8F%E6%98%8E_%E7%A2%81%E5%B3%B0_2017/ch26.html">
+     ch26 物件和類別
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E8%BC%95%E9%AC%86%E5%AD%B8python3_%E5%AD%AB%E5%AE%8F%E6%98%8E_%E7%A2%81%E5%B3%B0_2017/ch27.html">
+     ch27 類別的私有、保護、公開和靜態成員
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E8%BC%95%E9%AC%86%E5%AD%B8python3_%E5%AD%AB%E5%AE%8F%E6%98%8E_%E7%A2%81%E5%B3%B0_2017/ch28.html">
+     ch28 繼承
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E8%BC%95%E9%AC%86%E5%AD%B8python3_%E5%AD%AB%E5%AE%8F%E6%98%8E_%E7%A2%81%E5%B3%B0_2017/ch29.html">
+     ch29 多型
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/B_Python程式設計學習經典_吳翌禎_碁峰_2018/ch08/ch08.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FB_Python程式設計學習經典_吳翌禎_碁峰_2018/ch08/ch08.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/B_Python程式設計學習經典_吳翌禎_碁峰_2018/ch08/ch08.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   8.1 物件導向概念
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   8.2 類別與物件
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   8.3 繼承
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   8.4 封裝
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   8.3 多型
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="python">
+<h1>Python 基本語法：物件導向<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>8.1 物件導向概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load MyClass.py</span>
+<span class="c1"># -------------------------------</span>
+<span class="c1">#   Car.py</span>
+<span class="c1"># -------------------------------</span>
+<span class="k">class</span> <span class="nc">Car</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">seats</span><span class="p">,</span> <span class="n">cc</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">brand</span> <span class="o">=</span> <span class="n">brand</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">seats</span> <span class="o">=</span> <span class="n">seats</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">cc</span> <span class="o">=</span> <span class="n">cc</span>
+
+  <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;品牌:&quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">brand</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="s2">&quot;型號:&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="s2">&quot;規格:&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">seats</span> <span class="o">+</span> <span class="s2">&quot;座位&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">cc</span> <span class="o">+</span> <span class="s2">&quot;CC&quot;</span>
+    <span class="k">return</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>8.2 類別與物件<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load CH_8_2_EX_1_Class_Definition.py</span>
+<span class="c1"># -----------------------------------</span>
+<span class="c1">#  CH_8_2_EX_1_Class_Definition.py</span>
+<span class="c1"># -----------------------------------</span>
+<span class="k">class</span> <span class="nc">Human</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span>
+
+  <span class="k">def</span> <span class="nf">BMI</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">/</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load CH_8_2_EX_2_Object_Creation_1.py</span>
+<span class="c1"># -------------------------------------</span>
+<span class="c1">#   CH_8_2_EX_2_Object_Creation_1.py</span>
+<span class="c1"># -------------------------------------</span>
+<span class="k">class</span> <span class="nc">Human</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span>
+
+  <span class="k">def</span> <span class="nf">BMI</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">/</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="c1"># 建立物件</span>
+<span class="n">model_Bill</span> <span class="o">=</span> <span class="n">Human</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">88</span><span class="p">)</span>
+
+<span class="c1"># 印出物件兩個屬性</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_Bill</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_Bill</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
+
+<span class="c1"># 使用物件方法</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_Bill</span><span class="o">.</span><span class="n">BMI</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>180
+88
+27.160493827160494
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load CH_8_2_EX_3_Object_Creation_2.py</span>
+<span class="c1"># -------------------------------------</span>
+<span class="c1">#   CH_8_2_EX_3_Object_Creation_2.py</span>
+<span class="c1"># -------------------------------------</span>
+<span class="k">class</span> <span class="nc">Car</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">seats</span><span class="p">,</span> <span class="n">cc</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">brand</span> <span class="o">=</span> <span class="n">brand</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">seats</span> <span class="o">=</span> <span class="n">seats</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">cc</span> <span class="o">=</span> <span class="n">cc</span>
+
+  <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;品牌:&quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">brand</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="s2">&quot;型號:&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="s2">&quot;規格:&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">seats</span> <span class="o">+</span> <span class="s2">&quot;座位&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">cc</span> <span class="o">+</span> <span class="s2">&quot;CC&quot;</span>
+    <span class="k">return</span> <span class="n">s</span>
+
+
+<span class="c1"># 建立物件</span>
+<span class="n">mycar1</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="s2">&quot;Nissan&quot;</span><span class="p">,</span> <span class="s2">&quot;X Trail&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;2400&quot;</span><span class="p">)</span>
+
+<span class="c1"># 使用物件方法</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mycar1</span><span class="o">.</span><span class="n">display</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>品牌:Nissan
+型號:X Trail
+規格:4座位2400CC
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>8.3 繼承<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load CH_8_3_EX_1_Inheritance.py</span>
+<span class="c1"># -------------------------------</span>
+<span class="c1">#   CH_8_3_EX_1_Inheritance.py</span>
+<span class="c1"># -------------------------------</span>
+<span class="k">class</span> <span class="nc">Car</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">seats</span><span class="p">,</span> <span class="n">cc</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">brand</span> <span class="o">=</span> <span class="n">brand</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">seats</span> <span class="o">=</span> <span class="n">seats</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">cc</span> <span class="o">=</span> <span class="n">cc</span>
+
+  <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;品牌:&quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">brand</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="s2">&quot;型號:&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="s2">&quot;規格:&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">seats</span> <span class="o">+</span> <span class="s2">&quot;座位&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">cc</span> <span class="o">+</span> <span class="s2">&quot;CC&quot;</span>
+    <span class="k">return</span> <span class="n">s</span>
+
+<span class="c1"># Truck類別繼承Car類別</span>
+<span class="k">class</span> <span class="nc">Truck</span><span class="p">(</span><span class="n">Car</span><span class="p">):</span>
+  <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load CH_8_3_EX_2_Inheritance_Using_Override_Function.py</span>
+<span class="c1"># -------------------------------------------------------</span>
+<span class="c1">#   CH_8_3_EX_2_Inheritance_Using_Override_Function.py</span>
+<span class="c1"># -------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">MyClass</span> <span class="kn">import</span> <span class="n">Car</span>
+
+
+<span class="k">class</span> <span class="nc">Truck</span><span class="p">(</span><span class="n">Car</span><span class="p">):</span>
+  <span class="c1"># -----新增loading載重屬性</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">seats</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">loading</span><span class="p">):</span>
+
+    <span class="c1"># -----使用super()</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">seats</span><span class="p">,</span> <span class="n">cc</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">loading</span> <span class="o">=</span> <span class="n">loading</span>
+
+<span class="c1"># -----覆寫display()方法</span>
+  <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;本卡車是&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">brand</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">cc</span> <span class="o">+</span> <span class="s2">&quot;CC&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="s2">&quot;目前重量為&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">loading</span> <span class="o">+</span> <span class="s2">&quot;噸&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">s</span>
+
+
+<span class="c1"># -----建立物件</span>
+<span class="n">mycar1</span> <span class="o">=</span> <span class="n">Car</span><span class="p">(</span><span class="s2">&quot;Nissan&quot;</span><span class="p">,</span> <span class="s2">&quot;X Trail&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;2400&quot;</span><span class="p">)</span>
+<span class="n">mytruck1</span> <span class="o">=</span> <span class="n">Truck</span><span class="p">(</span><span class="s2">&quot;Ford&quot;</span><span class="p">,</span> <span class="s2">&quot;F-150&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;2700&quot;</span><span class="p">,</span> <span class="s2">&quot;2.2&quot;</span><span class="p">)</span>
+
+<span class="c1"># -----使用物件方法</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mycar1</span><span class="o">.</span><span class="n">display</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">30</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mytruck1</span><span class="o">.</span><span class="n">display</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>品牌:Nissan
+型號:X Trail
+規格:4座位2400CC
+------------------------------
+本卡車是Ford F-150
+2700CC
+目前重量為2.2噸
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load CH_8_3_EX_2_Inheritance_Using_Super_Fuction.py</span>
+<span class="c1"># ---------------------------------------------------</span>
+<span class="c1">#   CH_8_3_EX_2_Inheritance_Using_Super_Fuction.py</span>
+<span class="c1"># ---------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">MyClass</span> <span class="kn">import</span> <span class="n">Car</span>
+
+
+<span class="k">class</span> <span class="nc">Truck</span><span class="p">(</span><span class="n">Car</span><span class="p">):</span>
+  <span class="c1">#----- 新增loading載重屬性</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">seats</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">loading</span><span class="p">):</span>
+
+    <span class="c1">#----- 使用super()</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">brand</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">seats</span><span class="p">,</span> <span class="n">cc</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">loading</span> <span class="o">=</span> <span class="n">loading</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>8.4 封裝<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load CH_8_4_EX_1_Encapsulation_1.py</span>
+<span class="c1"># -----------------------------------</span>
+<span class="c1">#   CH_8_4_EX_1_Encapsulation_1.py</span>
+<span class="c1"># -----------------------------------</span>
+<span class="k">class</span> <span class="nc">Human</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__height</span> <span class="o">=</span> <span class="n">height</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__weight</span> <span class="o">=</span> <span class="n">weight</span>
+
+  <span class="k">def</span> <span class="nf">BMI</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__weight</span> <span class="o">/</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">__height</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="c1"># -----建立物件</span>
+<span class="n">model_Bill</span> <span class="o">=</span> <span class="n">Human</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">88</span><span class="p">)</span>
+
+<span class="c1"># -----使用物件方法</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_Bill</span><span class="o">.</span><span class="n">BMI</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27.160493827160494
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load CH_8_4_EX_2_Encapsulation_2.py</span>
+<span class="c1"># -----------------------------------</span>
+<span class="c1">#   CH_8_4_EX_2_Encapsulation_2.py</span>
+<span class="c1"># -----------------------------------</span>
+<span class="k">class</span> <span class="nc">Human</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__height</span> <span class="o">=</span> <span class="n">height</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__weight</span> <span class="o">=</span> <span class="n">weight</span>
+
+  <span class="k">def</span> <span class="nf">BMI</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__weight</span> <span class="o">/</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">__height</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="c1"># -----建立物件</span>
+<span class="n">model_Bill</span> <span class="o">=</span> <span class="n">Human</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mi">88</span><span class="p">)</span>
+
+<span class="c1"># -----印出物件兩個屬性</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_Bill</span><span class="o">.</span><span class="n">__height</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_Bill</span><span class="o">.</span><span class="n">__weight</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">22</span><span class="o">-</span><span class="n">ddea39f082fa</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> 
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="c1"># -----印出物件兩個屬性</span>
+<span class="ne">---&gt; </span><span class="mi">18</span> <span class="nb">print</span><span class="p">(</span><span class="n">model_Bill</span><span class="o">.</span><span class="n">__height</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="nb">print</span><span class="p">(</span><span class="n">model_Bill</span><span class="o">.</span><span class="n">__weight</span><span class="p">)</span>
+
+<span class="ne">AttributeError</span>: &#39;Human&#39; object has no attribute &#39;__height&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>8.3 多型<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load CH_8_5_EX_1_ Polymorphism.py</span>
+<span class="c1"># ---------------------------------</span>
+<span class="c1">#   CH_8_5_EX_1_ Polymorphism.py</span>
+<span class="c1"># ---------------------------------</span>
+<span class="k">class</span> <span class="nc">Mymath</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">getArea</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radiusorbase</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">height</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">radiusorbase</span> <span class="o">*</span> <span class="p">(</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">(</span><span class="mf">3.14</span> <span class="o">*</span> <span class="p">(</span><span class="n">radiusorbase</span> <span class="o">*</span> <span class="n">radiusorbase</span><span class="p">))</span>
+
+
+<span class="c1"># -----建立物件</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">Mymath</span><span class="p">()</span>
+
+<span class="c1"># -----輸入兩個參數呼叫方法計算三角形面積</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">getArea</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># -----輸入一個參數呼叫方法計算圓形面積</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">getArea</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50.0
+78.5
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./B_Python程式設計學習經典_吳翌禎_碁峰_2018\ch08"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AD%B8%E7%BF%92%E7%B6%93%E5%85%B8_%E5%90%B3%E7%BF%8C%E7%A6%8E_%E7%A2%81%E5%B3%B0_2018.html" title="previous page">Python程式設計學習經典(吳翌禎 碁峰 2018)</a>
+    <a class='right-next' id="next-link" href="../../B_%E6%9C%80%E6%96%B0Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AF%A6%E4%BE%8B%E5%85%A5%E9%96%80_%E9%AB%98%E6%A9%8B%E9%BA%BB%E5%A5%88_%E5%8D%9A%E7%A2%A9_2019.html" title="next page">最新Python程式設計實例入門(高橋麻奈 博碩 2019)</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Aaron Hsu<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
