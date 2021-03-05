@@ -1,11 +1,11 @@
 # Table of content
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
-- file: intro
-- file: content
-  sections:
-    - file: markdown
-    - file: notebooks
+# - file: intro
+# - file: content
+#   sections:
+#     - file: markdown
+#     - file: notebooks
 - file: B_Python程式設計學習經典_吳翌禎_碁峰_2018
   sections:
     - file: B_Python程式設計學習經典_吳翌禎_碁峰_2018\ch08\ch08
@@ -21,3 +21,10 @@
 - file: B_Python程式設計入門指南_蔡明志譯_碁峰_2016
   sections:
     - file: B_Python程式設計入門指南_蔡明志譯_碁峰_2016\ch07\ch07
+- file: B_輕鬆學python3_孫宏明_碁峰_2017
+  sections:
+    - file: B_輕鬆學python3_孫宏明_碁峰_2017\ch26
+    - file: B_輕鬆學python3_孫宏明_碁峰_2017\ch27
+    - file: B_輕鬆學python3_孫宏明_碁峰_2017\ch28
+    - file: B_輕鬆學python3_孫宏明_碁峰_2017\ch29
+- file: RST1
