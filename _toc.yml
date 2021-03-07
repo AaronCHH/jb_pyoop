@@ -1,7 +1,7 @@
 # Table of content
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
-# - file: intro
+- file: intro
 # - file: content
 #   sections:
 #     - file: markdown
@@ -27,4 +27,19 @@
     - file: B_輕鬆學python3_孫宏明_碁峰_2017\ch27
     - file: B_輕鬆學python3_孫宏明_碁峰_2017\ch28
     - file: B_輕鬆學python3_孫宏明_碁峰_2017\ch29
-- file: RST1
+- file: B_PythonTensorFlow2x_柯博文_碁峰_2020
+  sections:
+    - file: B_PythonTensorFlow2x_柯博文_碁峰_2020\ch05\ch05
+- file: B_物件導向Python與TensorFlow應用_鄭仲平_廣稅文化_2019
+  sections:
+    - file: B_物件導向Python與TensorFlow應用_鄭仲平_廣稅文化_2019\Ch03\Ch03
+    - file: B_物件導向Python與TensorFlow應用_鄭仲平_廣稅文化_2019\Ch04\Ch04
+    - file: B_物件導向Python與TensorFlow應用_鄭仲平_廣稅文化_2019\Ch05\Ch05
+    - file: B_物件導向Python與TensorFlow應用_鄭仲平_廣稅文化_2019\Ch06\Ch06
+    - file: B_物件導向Python與TensorFlow應用_鄭仲平_廣稅文化_2019\Ch07\Ch07
+    - file: B_物件導向Python與TensorFlow應用_鄭仲平_廣稅文化_2019\Ch08\Ch08
+    - file: B_物件導向Python與TensorFlow應用_鄭仲平_廣稅文化_2019\Ch09\Ch09
+    - file: B_物件導向Python與TensorFlow應用_鄭仲平_廣稅文化_2019\Ch10\Ch10
+- file: B_Python自學聖經_鄧文淵工作室_碁峰_2020
+  sections:
+    - file: B_Python自學聖經_鄧文淵工作室_碁峰_2020\ch07\ch07

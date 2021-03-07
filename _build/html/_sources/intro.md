@@ -1,7 +1,5 @@
-Welcome to your Jupyter Book
-============================
+# Introduction
 
-This is a small sample book to give you a feel for how book content is
-structured.
-
-Check out the content pages bundled with this sample book to get started.
+## Package Dev
+* Python自學聖經_鄧文淵工作室_碁峰_2020
+  * ch07
