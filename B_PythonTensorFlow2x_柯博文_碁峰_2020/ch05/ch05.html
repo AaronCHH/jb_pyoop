@@ -1,0 +1,1041 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ch05 OOP &#8212; OOP in Python</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="物件導向Python與TensorFlow應用(鄭仲平 廣稅文化 2019)" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019.html" />
+    <link rel="prev" title="Python + TensorFlow2.x 柯博文 碁峰 2020" href="../../B_PythonTensorFlow2x_%E6%9F%AF%E5%8D%9A%E6%96%87_%E7%A2%81%E5%B3%B0_2020.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">OOP in Python</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   OOP in Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AD%B8%E7%BF%92%E7%B6%93%E5%85%B8_%E5%90%B3%E7%BF%8C%E7%A6%8E_%E7%A2%81%E5%B3%B0_2018.html">
+   Python程式設計學習經典(吳翌禎 碁峰 2018)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AD%B8%E7%BF%92%E7%B6%93%E5%85%B8_%E5%90%B3%E7%BF%8C%E7%A6%8E_%E7%A2%81%E5%B3%B0_2018/ch08/ch08.html">
+     Python 基本語法：物件導向
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_%E6%9C%80%E6%96%B0Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AF%A6%E4%BE%8B%E5%85%A5%E9%96%80_%E9%AB%98%E6%A9%8B%E9%BA%BB%E5%A5%88_%E5%8D%9A%E7%A2%A9_2019.html">
+   最新Python程式設計實例入門(高橋麻奈 博碩 2019)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E6%9C%80%E6%96%B0Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AF%A6%E4%BE%8B%E5%85%A5%E9%96%80_%E9%AB%98%E6%A9%8B%E9%BA%BB%E5%A5%88_%E5%8D%9A%E7%A2%A9_2019/ch08/ch08.html">
+     Ch08 類別
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AF%A6%E7%94%A8%E7%B6%93%E5%85%B8_%E8%A8%B1%E6%B8%85%E8%B3%A2_%E6%9D%BE%E5%B4%97_2016.html">
+   Python程式設計實用經典 (許清賢 松崗 2016)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AF%A6%E7%94%A8%E7%B6%93%E5%85%B8_%E8%A8%B1%E6%B8%85%E8%B3%A2_%E6%9D%BE%E5%B4%97_2016/ch03.html">
+     Ch03 類別結構及功能
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%A4%A7%E6%95%B8%E6%93%9A%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90_%E8%94%A1%E6%98%8E%E5%BF%97_%E7%A2%81%E5%B3%B0_2018.html">
+   Python程式設計大數據資料分析(蔡明志 碁峰 2018)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%A4%A7%E6%95%B8%E6%93%9A%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90_%E8%94%A1%E6%98%8E%E5%BF%97_%E7%A2%81%E5%B3%B0_2018/ch12.html">
+     Ch12 物件導向程式設計
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%85%A5%E9%96%80%E6%8C%87%E5%8D%97_%E8%94%A1%E6%98%8E%E5%BF%97%E8%AD%AF_%E7%A2%81%E5%B3%B0_2016.html">
+   Python程式設計入門指南(蔡明志譯 碁峰 2016)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%85%A5%E9%96%80%E6%8C%87%E5%8D%97_%E8%94%A1%E6%98%8E%E5%BF%97%E8%AD%AF_%E7%A2%81%E5%B3%B0_2016/ch07/ch07.html">
+     Ch07 物件與類別
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_%E8%BC%95%E9%AC%86%E5%AD%B8python3_%E5%AD%AB%E5%AE%8F%E6%98%8E_%E7%A2%81%E5%B3%B0_2017.html">
+   輕鬆學python3 孫宏明 碁峰 2017
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E8%BC%95%E9%AC%86%E5%AD%B8python3_%E5%AD%AB%E5%AE%8F%E6%98%8E_%E7%A2%81%E5%B3%B0_2017/ch26.html">
+     ch26 物件和類別
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E8%BC%95%E9%AC%86%E5%AD%B8python3_%E5%AD%AB%E5%AE%8F%E6%98%8E_%E7%A2%81%E5%B3%B0_2017/ch27.html">
+     ch27 類別的私有、保護、公開和靜態成員
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E8%BC%95%E9%AC%86%E5%AD%B8python3_%E5%AD%AB%E5%AE%8F%E6%98%8E_%E7%A2%81%E5%B3%B0_2017/ch28.html">
+     ch28 繼承
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E8%BC%95%E9%AC%86%E5%AD%B8python3_%E5%AD%AB%E5%AE%8F%E6%98%8E_%E7%A2%81%E5%B3%B0_2017/ch29.html">
+     ch29 多型
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../../B_PythonTensorFlow2x_%E6%9F%AF%E5%8D%9A%E6%96%87_%E7%A2%81%E5%B3%B0_2020.html">
+   Python + TensorFlow2.x 柯博文 碁峰 2020
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Ch05 OOP
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019.html">
+   物件導向Python與TensorFlow應用(鄭仲平 廣稅文化 2019)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019/Ch03/Ch03.html">
+     Ch03 類別
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019/Ch04/Ch04.html">
+     Ch04 物件之組合
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019/Ch05/Ch05.html">
+     Ch05 封裝(Encapsulation)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019/Ch06/Ch06.html">
+     Ch06 繼承(Inheritance)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019/Ch07/Ch07.html">
+     Ch07 抽象類別 (abstract class)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019/Ch08/Ch08.html">
+     Ch08 多型 (Polymorphism)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019/Ch09/Ch09.html">
+     Ch09 設計抽象類別
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019/Ch10/Ch10.html">
+     Ch10 介面 (Interface)
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E8%87%AA%E5%AD%B8%E8%81%96%E7%B6%93_%E9%84%A7%E6%96%87%E6%B7%B5%E5%B7%A5%E4%BD%9C%E5%AE%A4_%E7%A2%81%E5%B3%B0_2020.html">
+   Python自學聖經：從程式素人到開發強者的技術與實戰大全
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_Python%E8%87%AA%E5%AD%B8%E8%81%96%E7%B6%93_%E9%84%A7%E6%96%87%E6%B7%B5%E5%B7%A5%E4%BD%9C%E5%AE%A4_%E7%A2%81%E5%B3%B0_2020/ch07/ch07.html">
+     Ch07 物件導向程式開發
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/B_PythonTensorFlow2x_柯博文_碁峰_2020/ch05/ch05.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FB_PythonTensorFlow2x_柯博文_碁峰_2020/ch05/ch05.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/B_PythonTensorFlow2x_柯博文_碁峰_2020/ch05/ch05.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="ch05-oop">
+<h1>Ch05 OOP<a class="headerlink" href="#ch05-oop" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/01-def1.py</span>
+<span class="c1">#!/usr/bin/env</span>
+<span class="k">def</span> <span class="nf">fun1</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this is function1&quot;</span><span class="p">)</span>
+
+
+<span class="n">fun1</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>this is function1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/02-def2.py</span>
+<span class="c1">#!/usr/bin/env</span>
+<span class="k">def</span> <span class="nf">fun2</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this is function2=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
+
+
+<span class="n">fun2</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">fun2</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>this is function2=100
+this is function2=200
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/03-def3.py</span>
+<span class="c1">#!/usr/bin/env</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Powen Ko, www.powenko.com&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">fun3</span><span class="p">(</span><span class="n">num1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num2</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">num1</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">num2</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fun3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fun3</span><span class="p">(</span><span class="n">num2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">num1</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fun3</span><span class="p">(</span><span class="n">num2</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">fun3</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">fun4</span><span class="p">():</span>
+  <span class="k">return</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+
+
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">fun4</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+5
+1
+0
+1
+2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/04-def4.py</span>
+<span class="c1">#!/usr/bin/env</span>
+<span class="k">def</span> <span class="nf">fun3</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n1</span> <span class="o">*</span> <span class="n">n2</span><span class="p">))</span>
+
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">9</span><span class="p">:</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">while</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="n">fun3</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1*1=1
+1*2=2
+1*3=3
+1*4=4
+1*5=5
+1*6=6
+1*7=7
+1*8=8
+1*9=9
+2*1=2
+2*2=4
+2*3=6
+2*4=8
+2*5=10
+2*6=12
+2*7=14
+2*8=16
+2*9=18
+3*1=3
+3*2=6
+3*3=9
+3*4=12
+3*5=15
+3*6=18
+3*7=21
+3*8=24
+3*9=27
+4*1=4
+4*2=8
+4*3=12
+4*4=16
+4*5=20
+4*6=24
+4*7=28
+4*8=32
+4*9=36
+5*1=5
+5*2=10
+5*3=15
+5*4=20
+5*5=25
+5*6=30
+5*7=35
+5*8=40
+5*9=45
+6*1=6
+6*2=12
+6*3=18
+6*4=24
+6*5=30
+6*6=36
+6*7=42
+6*8=48
+6*9=54
+7*1=7
+7*2=14
+7*3=21
+7*4=28
+7*5=35
+7*6=42
+7*7=49
+7*8=56
+7*9=63
+8*1=8
+8*2=16
+8*3=24
+8*4=32
+8*5=40
+8*6=48
+8*7=56
+8*8=64
+8*9=72
+9*1=9
+9*2=18
+9*3=27
+9*4=36
+9*5=45
+9*6=54
+9*7=63
+9*8=72
+9*9=81
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/05-def5.py</span>
+<span class="c1">#!/usr/bin/env</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Powen Ko, www.powenko.com&quot;</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">def fun3(num1=0,num2=0):</span>
+<span class="sd">    return (num1*2)+num2</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">MyFun</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">MyFun</span><span class="o">.</span><span class="n">fun3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/06-class1.py</span>
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/07-class2-init.py</span>
+<span class="k">class</span> <span class="nc">Myclass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">Myclass</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;PowenKo&quot;</span><span class="p">)</span>
+<span class="c1"># g1=Myclass(name=&quot;PowenKo&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello PowenKo
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/08-class3-fun.py</span>
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">fun1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fun1&quot;</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">fun3</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num2</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">num1</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">num2</span>
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="s2">&quot;Powen&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fun1</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">fun3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">fun3</span><span class="p">(</span><span class="n">num2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">num1</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello Powen
+fun1
+4
+5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/09-class4-selfValue.py</span>
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="n">mX</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">mY</span> <span class="o">=</span> <span class="mi">1</span>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mX</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mY</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">x1</span> <span class="o">=</span> <span class="n">x</span>
+
+  <span class="k">def</span> <span class="nf">fun1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mX</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+      <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mY</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x1</span><span class="p">)</span>
+
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fun1</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">mX</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8*8=64
+8*9=72
+9*8=72
+9*9=81
+8
+8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/10-class5-selfdef.py</span>
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="n">mX</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">mY</span> <span class="o">=</span> <span class="mi">1</span>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mX</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mY</span> <span class="o">=</span> <span class="n">y</span>
+
+  <span class="k">def</span> <span class="nf">fun1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mX</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+      <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mY</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fun2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">fun2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fun1</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8*8=64
+8*9=72
+9*8=72
+9*9=81
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/11-class6-PubPri.py</span>
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="n">mMyPub</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">__mMyPri</span> <span class="o">=</span> <span class="mi">1</span>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mMyPub</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__mMyPri</span> <span class="o">=</span> <span class="n">y</span>
+
+  <span class="k">def</span> <span class="nf">funPub</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fun1&quot;</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__funPri</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fun2&quot;</span><span class="p">)</span>
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">mMyPub</span><span class="p">)</span>
+<span class="c1"># print(g.__mMyPri)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">funPub</span><span class="p">()</span>
+<span class="c1"># g.__funPri()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+fun1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/12-class7-import.py</span>
+<span class="kn">from</span> <span class="nn">MyClass</span> <span class="kn">import</span> <span class="n">MyClass</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fun1</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8*8=64
+8*9=72
+9*8=72
+9*9=81
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/13-class8-inheritance.py</span>
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyClass &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">fun1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyClass -&gt; fun1&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">MyClassChild</span><span class="p">(</span><span class="n">MyClass</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyClassChild &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">fun2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyClassChild -&gt; fun2&quot;</span><span class="p">)</span>
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">MyClassChild</span><span class="p">(</span><span class="s2">&quot;Powen Ko&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fun1</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fun2</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MyClassChild Powen Ko
+MyClass -&gt; fun1
+MyClassChild -&gt; fun2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/14-class9-2inheritance.py</span>
+<span class="c1">#!/usr/bin/env</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Powen Ko, www.powenko.com&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">fun1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyClass -&gt; fun1&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">MyClass2</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">fun2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyClass2 -&gt; fun2&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">MyClassChild</span><span class="p">(</span><span class="n">MyClass</span><span class="p">,</span> <span class="n">MyClass2</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyClassChild &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">fun3</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyClassChild -&gt; fun3&quot;</span><span class="p">)</span>
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">MyClassChild</span><span class="p">(</span><span class="s2">&quot;Powen Ko&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fun1</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fun2</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fun3</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MyClassChild Powen Ko
+MyClass -&gt; fun1
+MyClass2 -&gt; fun2
+MyClassChild -&gt; fun3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/15-class10-inheritanceSuper.py</span>
+<span class="c1">#!/usr/bin/env</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Powen Ko, www.powenko.com&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">fun1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyClass -&gt; fun1&quot;</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">fun2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyClass -&gt; fun2&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">MyClassChild</span><span class="p">(</span><span class="n">MyClass</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyClassChild &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">fun2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fun2</span><span class="p">()</span>  <span class="c1"># 3.x</span>
+    <span class="k">except</span><span class="p">:</span>
+      <span class="nb">super</span><span class="p">(</span><span class="n">MyClassChild</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">fun2</span><span class="p">()</span>  <span class="c1"># 2.7</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyClassChild -&gt; fun3&quot;</span><span class="p">)</span>
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">MyClassChild</span><span class="p">(</span><span class="s2">&quot;Powen Ko&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fun1</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fun2</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MyClassChild Powen Ko
+MyClass -&gt; fun1
+MyClass -&gt; fun2
+MyClassChild -&gt; fun3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/38class10-inheritanceSuperValue.py</span>
+<span class="c1">#!/usr/bin/env</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Powen Ko, www.powenko.com&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="n">value2</span> <span class="o">=</span> <span class="mi">2</span>
+  <span class="n">value3</span> <span class="o">=</span> <span class="mi">3</span>
+
+  <span class="k">def</span> <span class="nf">fun1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyClass -&gt; fun1&quot;</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">fun2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyClass -&gt; fun2&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">value1</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="k">class</span> <span class="nc">MyClassChild</span><span class="p">(</span><span class="n">MyClass</span><span class="p">):</span>
+  <span class="n">value3</span> <span class="o">=</span> <span class="mi">13</span>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyClassChild &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">fun2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fun2</span><span class="p">()</span>  <span class="c1"># 3.x</span>
+    <span class="k">except</span><span class="p">:</span>
+      <span class="nb">super</span><span class="p">(</span><span class="n">MyClassChild</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">fun2</span><span class="p">()</span>  <span class="c1"># 2.7</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MyClassChild -&gt; fun3&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value3</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">super</span><span class="p">(</span><span class="n">MyClassChild</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">value3</span><span class="p">)</span>
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">MyClassChild</span><span class="p">(</span><span class="s2">&quot;Powen Ko&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fun1</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">fun2</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MyClassChild Powen Ko
+MyClass -&gt; fun1
+MyClass -&gt; fun2
+MyClassChild -&gt; fun3
+1
+2
+13
+3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/MyClass.py</span>
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="n">mX</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">mY</span> <span class="o">=</span> <span class="mi">1</span>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mX</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mY</span> <span class="o">=</span> <span class="n">y</span>
+
+  <span class="k">def</span> <span class="nf">fun1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mX</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+      <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mY</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fun2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">fun2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;*&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load ch05-OOP/MyFun.py</span>
+<span class="c1">#!/usr/bin/env</span>
+<span class="n">__author__</span> <span class="o">=</span> <span class="s2">&quot;Powen Ko, www.powenko.com&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">fun3</span><span class="p">(</span><span class="n">num1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">num2</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">num1</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">num2</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./B_PythonTensorFlow2x_柯博文_碁峰_2020\ch05"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../../B_PythonTensorFlow2x_%E6%9F%AF%E5%8D%9A%E6%96%87_%E7%A2%81%E5%B3%B0_2020.html" title="previous page">Python + TensorFlow2.x 柯博文 碁峰 2020</a>
+    <a class='right-next' id="next-link" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019.html" title="next page">物件導向Python與TensorFlow應用(鄭仲平 廣稅文化 2019)</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Aaron Hsu<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

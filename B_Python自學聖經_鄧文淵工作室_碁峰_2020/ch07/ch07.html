@@ -1,0 +1,940 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ch07 物件導向程式開發 &#8212; OOP in Python</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Python自學聖經：從程式素人到開發強者的技術與實戰大全" href="../../B_Python%E8%87%AA%E5%AD%B8%E8%81%96%E7%B6%93_%E9%84%A7%E6%96%87%E6%B7%B5%E5%B7%A5%E4%BD%9C%E5%AE%A4_%E7%A2%81%E5%B3%B0_2020.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">OOP in Python</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   OOP in Python
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AD%B8%E7%BF%92%E7%B6%93%E5%85%B8_%E5%90%B3%E7%BF%8C%E7%A6%8E_%E7%A2%81%E5%B3%B0_2018.html">
+   Python程式設計學習經典(吳翌禎 碁峰 2018)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AD%B8%E7%BF%92%E7%B6%93%E5%85%B8_%E5%90%B3%E7%BF%8C%E7%A6%8E_%E7%A2%81%E5%B3%B0_2018/ch08/ch08.html">
+     Python 基本語法：物件導向
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_%E6%9C%80%E6%96%B0Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AF%A6%E4%BE%8B%E5%85%A5%E9%96%80_%E9%AB%98%E6%A9%8B%E9%BA%BB%E5%A5%88_%E5%8D%9A%E7%A2%A9_2019.html">
+   最新Python程式設計實例入門(高橋麻奈 博碩 2019)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E6%9C%80%E6%96%B0Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AF%A6%E4%BE%8B%E5%85%A5%E9%96%80_%E9%AB%98%E6%A9%8B%E9%BA%BB%E5%A5%88_%E5%8D%9A%E7%A2%A9_2019/ch08/ch08.html">
+     Ch08 類別
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AF%A6%E7%94%A8%E7%B6%93%E5%85%B8_%E8%A8%B1%E6%B8%85%E8%B3%A2_%E6%9D%BE%E5%B4%97_2016.html">
+   Python程式設計實用經典 (許清賢 松崗 2016)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%AF%A6%E7%94%A8%E7%B6%93%E5%85%B8_%E8%A8%B1%E6%B8%85%E8%B3%A2_%E6%9D%BE%E5%B4%97_2016/ch03.html">
+     Ch03 類別結構及功能
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%A4%A7%E6%95%B8%E6%93%9A%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90_%E8%94%A1%E6%98%8E%E5%BF%97_%E7%A2%81%E5%B3%B0_2018.html">
+   Python程式設計大數據資料分析(蔡明志 碁峰 2018)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%A4%A7%E6%95%B8%E6%93%9A%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90_%E8%94%A1%E6%98%8E%E5%BF%97_%E7%A2%81%E5%B3%B0_2018/ch12.html">
+     Ch12 物件導向程式設計
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%85%A5%E9%96%80%E6%8C%87%E5%8D%97_%E8%94%A1%E6%98%8E%E5%BF%97%E8%AD%AF_%E7%A2%81%E5%B3%B0_2016.html">
+   Python程式設計入門指南(蔡明志譯 碁峰 2016)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_Python%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E5%85%A5%E9%96%80%E6%8C%87%E5%8D%97_%E8%94%A1%E6%98%8E%E5%BF%97%E8%AD%AF_%E7%A2%81%E5%B3%B0_2016/ch07/ch07.html">
+     Ch07 物件與類別
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_%E8%BC%95%E9%AC%86%E5%AD%B8python3_%E5%AD%AB%E5%AE%8F%E6%98%8E_%E7%A2%81%E5%B3%B0_2017.html">
+   輕鬆學python3 孫宏明 碁峰 2017
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E8%BC%95%E9%AC%86%E5%AD%B8python3_%E5%AD%AB%E5%AE%8F%E6%98%8E_%E7%A2%81%E5%B3%B0_2017/ch26.html">
+     ch26 物件和類別
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E8%BC%95%E9%AC%86%E5%AD%B8python3_%E5%AD%AB%E5%AE%8F%E6%98%8E_%E7%A2%81%E5%B3%B0_2017/ch27.html">
+     ch27 類別的私有、保護、公開和靜態成員
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E8%BC%95%E9%AC%86%E5%AD%B8python3_%E5%AD%AB%E5%AE%8F%E6%98%8E_%E7%A2%81%E5%B3%B0_2017/ch28.html">
+     ch28 繼承
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E8%BC%95%E9%AC%86%E5%AD%B8python3_%E5%AD%AB%E5%AE%8F%E6%98%8E_%E7%A2%81%E5%B3%B0_2017/ch29.html">
+     ch29 多型
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_PythonTensorFlow2x_%E6%9F%AF%E5%8D%9A%E6%96%87_%E7%A2%81%E5%B3%B0_2020.html">
+   Python + TensorFlow2.x 柯博文 碁峰 2020
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_PythonTensorFlow2x_%E6%9F%AF%E5%8D%9A%E6%96%87_%E7%A2%81%E5%B3%B0_2020/ch05/ch05.html">
+     Ch05 OOP
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019.html">
+   物件導向Python與TensorFlow應用(鄭仲平 廣稅文化 2019)
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019/Ch03/Ch03.html">
+     Ch03 類別
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019/Ch04/Ch04.html">
+     Ch04 物件之組合
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019/Ch05/Ch05.html">
+     Ch05 封裝(Encapsulation)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019/Ch06/Ch06.html">
+     Ch06 繼承(Inheritance)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019/Ch07/Ch07.html">
+     Ch07 抽象類別 (abstract class)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019/Ch08/Ch08.html">
+     Ch08 多型 (Polymorphism)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019/Ch09/Ch09.html">
+     Ch09 設計抽象類別
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../B_%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91Python%E8%88%87TensorFlow%E6%87%89%E7%94%A8_%E9%84%AD%E4%BB%B2%E5%B9%B3_%E5%BB%A3%E7%A8%85%E6%96%87%E5%8C%96_2019/Ch10/Ch10.html">
+     Ch10 介面 (Interface)
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../../B_Python%E8%87%AA%E5%AD%B8%E8%81%96%E7%B6%93_%E9%84%A7%E6%96%87%E6%B7%B5%E5%B7%A5%E4%BD%9C%E5%AE%A4_%E7%A2%81%E5%B3%B0_2020.html">
+   Python自學聖經：從程式素人到開發強者的技術與實戰大全
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Ch07 物件導向程式開發
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/B_Python自學聖經_鄧文淵工作室_碁峰_2020/ch07/ch07.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FB_Python自學聖經_鄧文淵工作室_碁峰_2020/ch07/ch07.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/B_Python自學聖經_鄧文淵工作室_碁峰_2020/ch07/ch07.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   7.1 類別與物件
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   7.2 類別封裝
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   7.3 類別繼承
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   7.4 多型
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   7.5 多重繼承
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   7.6 類別應用
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python">
+   7.7 建立 Python 專案
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   7.8 打造自己的模組
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     7.8.4 多模組
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     7.8.5 共用模組
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="ch07">
+<h1>Ch07 物件導向程式開發<a class="headerlink" href="#ch07" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>7.1 類別與物件<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load class01.py</span>
+<span class="k">class</span> <span class="nc">Animal</span><span class="p">():</span>  <span class="c1"># 定義類別</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;小鳥&quot;</span>  <span class="c1"># 定義屬性</span>
+
+  <span class="k">def</span> <span class="nf">sing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義方法</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;很會唱歌!&quot;</span><span class="p">)</span>
+
+
+<span class="n">bird</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">()</span>  <span class="c1"># 以 Animal 類別，建立一個名叫小鳥的 bird物件</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bird</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># 小鳥</span>
+<span class="n">bird</span><span class="o">.</span><span class="n">sing</span><span class="p">()</span>  <span class="c1"># 很會唱歌!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load class02.py</span>
+<span class="k">class</span> <span class="nc">Animal</span><span class="p">():</span>  <span class="c1"># 定義類別</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>  <span class="c1"># 定義屬性</span>
+
+  <span class="k">def</span> <span class="nf">sing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義方法</span>
+    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;，很會唱歌!&quot;</span><span class="p">)</span>
+
+
+<span class="n">bird</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="s2">&quot;鸚鵡&quot;</span><span class="p">)</span>  <span class="c1"># 以 Animal 類別，建立一個名叫鸚鵡的 bird物件</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bird</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># 鸚鵡</span>
+<span class="n">bird</span><span class="o">.</span><span class="n">sing</span><span class="p">()</span>  <span class="c1"># 鸚鵡，很會唱歌!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load class03.py</span>
+<span class="k">class</span> <span class="nc">Animal</span><span class="p">():</span>  <span class="c1"># 定義類別</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>  <span class="c1"># 定義屬性</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+  <span class="k">def</span> <span class="nf">sing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義方法</span>
+    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;歲，很會唱歌!&quot;</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">grow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>  <span class="c1"># 定義方法</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">+=</span> <span class="n">year</span>
+
+
+<span class="n">bird</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="s2">&quot;鸚鵡&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 以 Animal 類別，建立一個名叫鸚鵡、1歲大的 bird物件</span>
+<span class="n">bird</span><span class="o">.</span><span class="n">grow</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 長大1歲</span>
+<span class="n">bird</span><span class="o">.</span><span class="n">sing</span><span class="p">()</span>  <span class="c1"># 鸚鵡2歲，很會唱歌!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>7.2 類別封裝<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load class04.py</span>
+<span class="k">class</span> <span class="nc">Animal</span><span class="p">():</span>  <span class="c1"># 定義類別</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">=</span> <span class="n">name</span>  <span class="c1"># 定義私用屬性</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__age</span> <span class="o">=</span> <span class="n">age</span>
+
+  <span class="k">def</span> <span class="nf">__sing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義私用方法</span>
+    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__name</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__age</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;歲，很會唱歌，&quot;</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">talk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義共用方法</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__sing</span><span class="p">()</span>  <span class="c1"># 使用私用方法</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;也會模仿人類說話!&quot;</span><span class="p">)</span>
+
+
+<span class="n">bird</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="s2">&quot;灰鸚鵡&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># 以 Animal 類別，建立一個名叫灰鸚鵡、2歲大的 bird物件</span>
+<span class="n">bird</span><span class="o">.</span><span class="n">talk</span><span class="p">()</span>  <span class="c1"># 灰鸚鵡2歲，很會唱歌，也會模仿人類說話!</span>
+
+<span class="n">bird</span><span class="o">.</span><span class="n">__age</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># 設定無效</span>
+<span class="n">bird</span><span class="o">.</span><span class="n">talk</span><span class="p">()</span>  <span class="c1"># 灰鸚鵡2歲，很會唱歌，也會模仿人類說話!</span>
+<span class="c1"># bird.__sing()   #執行出現錯誤</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>7.3 類別繼承<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load class05.py</span>
+<span class="k">class</span> <span class="nc">Animal</span><span class="p">():</span>  <span class="c1"># 定義父類別</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>  <span class="c1"># 定義共用屬性</span>
+
+  <span class="k">def</span> <span class="nf">fly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義共用方法</span>
+    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;很會飛!&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Bird</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>  <span class="c1"># 定義子類別</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;粉紅色&quot;</span> <span class="o">+</span> <span class="n">name</span>  <span class="c1"># 覆寫父類別的建構式</span>
+
+  <span class="k">def</span> <span class="nf">sing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義子類別的方法</span>
+    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;也愛唱歌!&quot;</span><span class="p">)</span>
+
+
+<span class="n">pigeon</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="s2">&quot;小白鴿&quot;</span><span class="p">)</span>  <span class="c1"># 以 Animal 類別，建立一個名叫小白鴿的 pigeon 物件</span>
+<span class="n">pigeon</span><span class="o">.</span><span class="n">fly</span><span class="p">()</span>  <span class="c1"># 小白鴿很會飛!</span>
+
+<span class="n">parrot</span> <span class="o">=</span> <span class="n">Bird</span><span class="p">(</span><span class="s2">&quot;小鸚鵡&quot;</span><span class="p">)</span>  <span class="c1"># 以 Bird 類別，建立一個名叫小鸚鵡的 parrot 物件</span>
+<span class="n">parrot</span><span class="o">.</span><span class="n">fly</span><span class="p">()</span>  <span class="c1"># 粉紅色小鸚鵡很會飛!</span>
+<span class="n">parrot</span><span class="o">.</span><span class="n">sing</span><span class="p">()</span>  <span class="c1"># 粉紅色小鸚鵡也愛唱歌!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load class06.py</span>
+<span class="k">class</span> <span class="nc">Animal</span><span class="p">():</span>  <span class="c1"># 定義父類別</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>  <span class="c1"># 定義共用屬性</span>
+
+  <span class="k">def</span> <span class="nf">fly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義共用方法</span>
+    <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;很會飛!&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Bird</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>  <span class="c1"># 定義子類別</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>  <span class="c1"># 執行父類別的 __init__()方法</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>  <span class="c1"># 定義子類別共用屬性</span>
+
+  <span class="k">def</span> <span class="nf">fly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義子類別共用方法</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;歲&quot;</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fly</span><span class="p">()</span>  <span class="c1"># 執行父類別的 fly方法</span>
+
+
+<span class="n">pigeon</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="s2">&quot;小白鴿&quot;</span><span class="p">)</span>  <span class="c1"># 以 Animal 類別，建立一個名叫小白鴿的 pigeon 物件</span>
+<span class="n">pigeon</span><span class="o">.</span><span class="n">fly</span><span class="p">()</span>  <span class="c1"># 小白鴿很會飛!</span>
+
+<span class="n">parrot</span> <span class="o">=</span> <span class="n">Bird</span><span class="p">(</span><span class="s2">&quot;小鸚鵡&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># 以 Bird 類別，建立一個名叫小鸚鵡、2歲大的 parrot 物件</span>
+<span class="n">parrot</span><span class="o">.</span><span class="n">fly</span><span class="p">()</span>  <span class="c1"># 2歲小鸚鵡很會飛!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>7.4 多型<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load class07.py</span>
+<span class="k">class</span> <span class="nc">Animal</span><span class="p">():</span>  <span class="c1"># 定義父類別</span>
+  <span class="k">def</span> <span class="nf">fly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義共用方法</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;時速 20公里!&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Bird</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>  <span class="c1"># 定義子類別</span>
+  <span class="k">def</span> <span class="nf">fly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">speed</span><span class="p">):</span>  <span class="c1"># 定義共用方法</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;時速 &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">speed</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;公里!&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Plane</span><span class="p">():</span>  <span class="c1"># 定義類別</span>
+  <span class="k">def</span> <span class="nf">fly</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義共用方法</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;時速 1000公里!&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">fly</span><span class="p">(</span><span class="n">speed</span><span class="p">):</span>  <span class="c1"># 定義函式</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;時速 &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">speed</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;英哩!&quot;</span><span class="p">)</span>
+
+
+<span class="n">animal</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">()</span>  <span class="c1"># 以 Animal 類別建立 animal 物件</span>
+<span class="n">animal</span><span class="o">.</span><span class="n">fly</span><span class="p">()</span>  <span class="c1"># 時速 20公里!</span>
+
+<span class="n">bird</span> <span class="o">=</span> <span class="n">Bird</span><span class="p">()</span>  <span class="c1"># 以 Bird 類別建立 bird 物件</span>
+<span class="n">bird</span><span class="o">.</span><span class="n">fly</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>  <span class="c1"># 時速 60公里!</span>
+
+<span class="n">plane</span> <span class="o">=</span> <span class="n">Plane</span><span class="p">()</span>  <span class="c1"># 以 Plane 類別建立 plane 物件</span>
+<span class="n">plane</span><span class="o">.</span><span class="n">fly</span><span class="p">()</span>  <span class="c1"># 時速 1000公里!</span>
+
+<span class="n">fly</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># 時速 5英哩!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>7.5 多重繼承<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load class08.py</span>
+<span class="k">class</span> <span class="nc">Father</span><span class="p">():</span>  <span class="c1"># 定義父類別</span>
+  <span class="k">def</span> <span class="nf">say</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義共用方法</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;明天會更好!&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Mother</span><span class="p">():</span>  <span class="c1"># 定義父類別</span>
+  <span class="k">def</span> <span class="nf">say</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義共用方法</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;包容、尊重!&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Father</span><span class="p">,</span> <span class="n">Mother</span><span class="p">):</span>  <span class="c1"># 定義子類別</span>
+  <span class="k">pass</span>
+
+
+<span class="n">child</span> <span class="o">=</span> <span class="n">Child</span><span class="p">()</span>  <span class="c1"># 建立 child 物件</span>
+<span class="n">child</span><span class="o">.</span><span class="n">say</span><span class="p">()</span>  <span class="c1"># 明天會更好!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>7.6 類別應用<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load Area.py</span>
+<span class="k">class</span> <span class="nc">Rectangle</span><span class="p">():</span>  <span class="c1"># 定義父類別</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>  <span class="c1"># 定義共用屬性</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>  <span class="c1"># 定義共用屬性</span>
+
+  <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義共用方法</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+
+
+<span class="k">class</span> <span class="nc">Triangle</span><span class="p">(</span><span class="n">Rectangle</span><span class="p">):</span>  <span class="c1"># 定義子類別</span>
+  <span class="k">def</span> <span class="nf">area2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義子類別的共用方法</span>
+    <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+
+
+<span class="n">triangle</span> <span class="o">=</span> <span class="n">Triangle</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>  <span class="c1"># 建立 triangle 物件</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;矩形面積=&quot;</span><span class="p">,</span> <span class="n">triangle</span><span class="o">.</span><span class="n">area</span><span class="p">())</span>  <span class="c1"># 30</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;三角形面積=&quot;</span><span class="p">,</span> <span class="n">triangle</span><span class="o">.</span><span class="n">area2</span><span class="p">())</span>  <span class="c1"># 15</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>矩形面積= 30
+三角形面積= 15.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="python">
+<h2>7.7 建立 Python 專案<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load projectHello/index.py</span>
+<span class="kn">from</span> <span class="nn">mypackage.Hello</span> <span class="kn">import</span> <span class="n">sayHello</span>
+
+<span class="n">sayHello</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load projectHello/mypackage/Hello.py</span>
+<span class="k">def</span> <span class="nf">sayHello</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>7.8 打造自己的模組<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load module-1.py</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span><span class="n">n2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n1</span><span class="o">+</span><span class="n">n2</span>
+    
+<span class="k">def</span> <span class="nf">sub</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span><span class="n">n2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n1</span><span class="o">-</span><span class="n">n2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># 3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load calculate.py</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span><span class="n">n2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n1</span><span class="o">+</span><span class="n">n2</span>
+    
+<span class="k">def</span> <span class="nf">sub</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span><span class="n">n2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n1</span><span class="o">-</span><span class="n">n2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load getPrivateAttribute.py</span>
+<span class="k">class</span> <span class="nc">Father</span><span class="p">():</span>      <span class="c1">#定義父類別  </span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>    
+        <span class="bp">self</span><span class="o">.</span><span class="n">__eye</span><span class="o">=</span><span class="s2">&quot;黑色&quot;</span> <span class="c1">#定義私用屬性</span>
+    <span class="k">def</span> <span class="nf">getEye</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    <span class="c1">#定義共用方法傳回私用屬性</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eye</span>
+        
+<span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Father</span><span class="p">):</span>      <span class="c1">#定義子類別  </span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">eye</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eye</span><span class="o">=</span><span class="n">eye</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fatherEye</span><span class="o">=</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">getEye</span><span class="p">()</span> <span class="c1">#取得私用屬性</span>
+      
+<span class="n">joe</span> <span class="o">=</span> <span class="n">Child</span><span class="p">(</span><span class="s2">&quot;小華&quot;</span><span class="p">,</span><span class="s2">&quot;棕色&quot;</span><span class="p">)</span> <span class="c1">#建立子類別物件 joe</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">joe</span><span class="o">.</span><span class="n">name</span><span class="o">+</span><span class="s2">&quot;眼睛是&quot;</span><span class="o">+</span><span class="n">joe</span><span class="o">.</span><span class="n">eye</span><span class="o">+</span><span class="s2">&quot;，他的父親則是&quot;</span><span class="o">+</span><span class="n">joe</span><span class="o">.</span><span class="n">fatherEye</span><span class="p">)</span>
+<span class="c1"># 執行結果：小華眼睛是棕色，他的父親則是黑色      </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load module-2.py</span>
+<span class="kn">import</span> <span class="nn">calculate</span>  <span class="c1"># 匯入 calculate 模組</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load module-3.py</span>
+<span class="kn">from</span> <span class="nn">calculate</span> <span class="kn">import</span> <span class="n">add</span><span class="p">,</span> <span class="n">sub</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load module-4.py</span>
+<span class="kn">from</span> <span class="nn">calculate</span> <span class="kn">import</span> <span class="n">add</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># NameError: name &#39;sub&#39; is not defined</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load module-5.py</span>
+<span class="kn">from</span> <span class="nn">calculate</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sub</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load module-6.py</span>
+<span class="kn">from</span> <span class="nn">calculate</span> <span class="kn">import</span> <span class="n">add</span> <span class="k">as</span> <span class="n">a</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 7</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load module-7.py</span>
+<span class="kn">import</span> <span class="nn">calculate</span> <span class="k">as</span> <span class="nn">cal</span>  <span class="c1"># 匯入 calculate 模組，並取別名為 cal</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cal</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cal</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># 3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>7.8.4 多模組<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load projectArea/index.py</span>
+<span class="kn">from</span> <span class="nn">areapackage.myClass</span> <span class="kn">import</span> <span class="n">Triangle</span>
+
+<span class="n">triangle</span> <span class="o">=</span> <span class="n">Triangle</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="c1">#建立 triangle 物件</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;矩形面積=&quot;</span><span class="p">,</span><span class="n">triangle</span><span class="o">.</span><span class="n">area</span><span class="p">())</span>    <span class="c1">#30</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;三角形面積=&quot;</span><span class="p">,</span><span class="n">triangle</span><span class="o">.</span><span class="n">area2</span><span class="p">())</span> <span class="c1">#15</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load projectArea/areapackage/myClass.py</span>
+<span class="k">class</span> <span class="nc">Rectangle</span><span class="p">():</span>  <span class="c1"># 定義父類別</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>  <span class="c1"># 定義共用屬性</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>  <span class="c1"># 定義共用屬性</span>
+
+  <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義共用方法</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+
+
+<span class="k">class</span> <span class="nc">Triangle</span><span class="p">(</span><span class="n">Rectangle</span><span class="p">):</span>  <span class="c1"># 定義子類別</span>
+  <span class="k">def</span> <span class="nf">area2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定義子類別的共用方法</span>
+    <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>7.8.5 共用模組<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load CallModule.py</span>
+<span class="kn">from</span> <span class="nn">areapackage2.Rectangle</span> <span class="kn">import</span> <span class="n">Rectangle</span>
+<span class="kn">from</span> <span class="nn">areapackage2.Triangle</span> <span class="kn">import</span> <span class="n">Triangle</span>
+
+<span class="n">triangle</span> <span class="o">=</span> <span class="n">Triangle</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>  <span class="c1"># 建立 triangle 物件</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;矩形面積=&quot;</span><span class="p">,</span> <span class="n">triangle</span><span class="o">.</span><span class="n">area</span><span class="p">())</span>  <span class="c1"># 30</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;三角形面積=&quot;</span><span class="p">,</span> <span class="n">triangle</span><span class="o">.</span><span class="n">area2</span><span class="p">())</span>  <span class="c1"># 15.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load password.py</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./B_Python自學聖經_鄧文淵工作室_碁峰_2020\ch07"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../../B_Python%E8%87%AA%E5%AD%B8%E8%81%96%E7%B6%93_%E9%84%A7%E6%96%87%E6%B7%B5%E5%B7%A5%E4%BD%9C%E5%AE%A4_%E7%A2%81%E5%B3%B0_2020.html" title="previous page">Python自學聖經：從程式素人到開發強者的技術與實戰大全</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Aaron Hsu<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
